@@ -22,12 +22,15 @@ spring:
           username: firechiang
           password: dsfksdfnksdnfsd # 公共的仓库可以不用用户名和密码
           # basedir: /Users/admin/code/myProjects/java/imooc/SpringCloud_Sell/config/basedir  配置文件下载后所在目录
-# 配置服务访问说明
+          
+# 配置服务配置文件访问说明（注意：配置文件也要按照如下方式进行命名）
 # /{name}-{profiles}.yml  
 # /{label}/{name}-{profiles}.yml  
+
 # name=服务名称
 # profiles=环境
 # label=配置文件所在git分支，不写默认就是master分支（当然不用git也就没有分支一说）  
+
 # 日志级别相关      
 logging:
   level:
