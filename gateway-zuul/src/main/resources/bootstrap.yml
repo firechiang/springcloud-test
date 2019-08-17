@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: gatewayZuul
+  cloud:
+    # 获取配置相关信息的配置
+    config:
+      profile: dev
+      discovery:
+        enabled: true
+        # 配置服务在注册中心里面的名称（可以到eureka server管理端去查看）
+        service-id: CONFIG 
+        
+# Eureka Server相关配置     
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

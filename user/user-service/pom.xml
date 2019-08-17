@@ -5,34 +5,34 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.firecode</groupId>
-		<artifactId>order</artifactId>
+		<artifactId>user</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>order-service</artifactId>
-	<name>order-service</name>
+	<artifactId>user-service</artifactId>
+	<name>user-service</name>
 	<url></url>
-
-	<properties></properties>
-
+	<properties>
+	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-client</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
 		<dependency>
@@ -44,26 +44,16 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		
-	    <!-- Spring Cloud Bus配置自动刷新依赖（注意：Bus默认使用RabbitMQ） -->
+
+		<!-- Spring Cloud Bus配置自动刷新依赖（注意：Bus默认使用RabbitMQ） -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-		</dependency>
 
 		<dependency>
-			<groupId>com.firecode</groupId>
-			<artifactId>order-common</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.firecode</groupId>
-			<artifactId>product-api</artifactId>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 
 		<dependency>
@@ -71,6 +61,5 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 </project>
