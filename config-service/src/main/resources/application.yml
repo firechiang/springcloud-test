@@ -1,0 +1,22 @@
+server:
+  # 禁用 Spring 生成404等错误信息，返回到前台
+  error:
+    whitelabel:
+      enabled: false
+  port: 8082
+  tomcat:
+    uri-encoding: UTF-8
+  #servlet:
+    #context-path: /config
+spring:
+  # JSON相关配置
+  jackson:
+    locale: zh_CN
+    default-property-inclusion: non-null
+# 日志级别相关      
+logging:
+  level:
+    com.firecode.elktest.biz.dao: debug
+    org.hibernate.SQL: debug
+# 开启全局debug日志    
+#debug: true

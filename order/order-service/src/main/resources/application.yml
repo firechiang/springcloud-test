@@ -1,0 +1,56 @@
+server:
+  # 禁用 Spring 生成404等错误信息，返回到前台
+  error:
+    whitelabel:
+      enabled: false
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+  #servlet:
+    #context-path: /order
+spring:
+  # JSON相关配置
+  jackson:
+    locale: zh_CN
+    default-property-inclusion: non-null
+  # 数据源相关配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.229.132:3306/springcloud_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: Jiang@123
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: true
+      # 测试连接是否有效的查询语句
+      connection-test-query: select 1
+  # JPA相关配置  
+  jpa:
+    database: mysql
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  # Redis相关配置    
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 3000
+    jedis:
+      pool:
+        min-idle: 1   
+        
+# 配置 PRODUCT 服务的负载均衡策略（注意：product是服务的名称，可通过eureka管理端查看到）          
+PRODUCT:
+  ribbon:
+    # 具体负载均衡实现类（可自定义）
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule  
+          
+# 日志级别相关      
+logging:
+  level:
+    com.firecode.elktest.biz.dao: debug
+    org.hibernate.SQL: debug
+# 开启全局debug日志    
+#debug: true
