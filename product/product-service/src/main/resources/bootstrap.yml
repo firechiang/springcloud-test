@@ -2,6 +2,7 @@ spring:
   application:
     name: product
   cloud:
+    # 获取配置相关信息的配置
     config:
       profile: dev
       discovery:
