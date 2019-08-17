@@ -40,9 +40,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
+		<!-- Spring Cloud Bus配置自动刷新依赖（注意：Bus默认使用RabbitMQ） -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
 
 		<dependency>

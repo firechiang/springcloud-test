@@ -1,4 +1,4 @@
-package com.firecode.springcloudtest.product.service.controller;
+package com.firecode.springcloudtest.order.service.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
