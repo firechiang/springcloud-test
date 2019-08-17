@@ -9,6 +9,8 @@ server:
   #servlet:
     #context-path: /product
 spring:
+  application:
+    name: product
   # JSON相关配置
   jackson:
     locale: zh_CN
@@ -31,6 +33,15 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+
+# Eureka Server相关配置   
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+          
 # 日志级别相关      
 logging:
   level:

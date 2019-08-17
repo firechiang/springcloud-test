@@ -9,6 +9,8 @@ server:
   #servlet:
     #context-path: /order
 spring:
+  application:
+    name: order
   # JSON相关配置
   jackson:
     locale: zh_CN
@@ -40,6 +42,14 @@ spring:
     jedis:
       pool:
         min-idle: 1   
+
+# Eureka Server相关配置       
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true        
         
 # 配置 PRODUCT 服务的负载均衡策略（注意：product是服务的名称，可通过eureka管理端查看到）          
 PRODUCT:

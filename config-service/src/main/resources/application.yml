@@ -13,6 +13,21 @@ spring:
   jackson:
     locale: zh_CN
     default-property-inclusion: non-null
+  # Config Server相关配置  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab-demo.com/SpringCloud_Sell/config-repo.git
+          username: firechiang
+          password: dsfksdfnksdnfsd
+          # basedir: /Users/admin/code/myProjects/java/imooc/SpringCloud_Sell/config/basedir  使用本地配置文件的配置方式
+# 配置服务访问说明
+# /{name}-{profiles}.yml  
+# /{label}/{name}-{profiles}.yml  
+# name=服务名称
+# profiles=环境
+# label=配置文件所在git分支（当然不用git也就没有分支一说）  
 # 日志级别相关      
 logging:
   level:
