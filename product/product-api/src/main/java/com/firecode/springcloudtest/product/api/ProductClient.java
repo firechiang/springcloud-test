@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,11 +22,14 @@ import com.firecode.springcloudtest.product.common.ProductInfoOutput;
 @FeignClient(name = "product", fallback = ProductClient.ProductClientFallback.class)
 public interface ProductClient {
 
-    @PostMapping("/product/listForOrder")
+    @PostMapping("/listForOrder")
     List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList);
 
-    @PostMapping("/product/decreaseStock")
+    @PostMapping("/decreaseStock")
     void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList);
+    
+    @GetMapping("/sleuth_test")
+    String sleuth_test();
 
     @Component
     static class ProductClientFallback implements ProductClient {
@@ -38,6 +42,11 @@ public interface ProductClient {
         @Override
         public void decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
 
+        }
+        
+        public String sleuth_test(){
+        	
+        	return null;
         }
     }
 }

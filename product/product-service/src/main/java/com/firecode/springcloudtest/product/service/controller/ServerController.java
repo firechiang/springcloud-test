@@ -25,4 +25,10 @@ public class ServerController {
     	
         return "config_test="+config_test;
     }
+    
+    @GetMapping("/sleuth_test")
+    public String sleuthTest(){
+    	
+    	return "我是Product服务链路追踪测试所返回的结果";
+    }
 }
