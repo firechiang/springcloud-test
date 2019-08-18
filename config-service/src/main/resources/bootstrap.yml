@@ -7,7 +7,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false                     # 使用IP访问（如果容器里面不能访问，可以设置为true）
 
 logging:
   level:
