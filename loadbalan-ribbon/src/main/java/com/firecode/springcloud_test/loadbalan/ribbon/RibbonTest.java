@@ -1,15 +1,17 @@
 package com.firecode.springcloud_test.loadbalan.ribbon;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.ribbon.RibbonClients;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-// 全局配置负载均衡策略
-@RibbonClients(defaultConfiguration = RibbonConfig.class)
+// 全局配置负载均衡策略（注意：建议使用配置文件的方式配置）
+//@RibbonClients(defaultConfiguration = RibbonConfig.class)
+// 单个服务负载均衡策略，这里是作用于 user-service 服务（注意：建议使用配置文件的方式配置）
+@RibbonClient(name="user-service",configuration = RibbonConfig.class)
 public class RibbonTest {
 	
 	@Autowired
