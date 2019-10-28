@@ -1,0 +1,21 @@
+feign:
+  client:    config:
+      # 服务名称（下面是Feign的日志级别，注意：还要配置 logging:level:com.firecode.springcloud_test.client.feign.ervice.TestService=debug否则服务生效）      test-service:         logger-level: full
+        connect-timeout: 3000                           # 连接超时时间
+        read-timeout: 5000                              # 读取超时时间
+        error-decoder: com.xxx.xxx.SimpleErrorDeocder   # 错误解码器
+        retryer: 3                                      # 重试次数
+        encoder: com.xxx.xxx.SimpleEncoder              # 编码器
+        decoder: com.xxx.xxx.SimpleDeocder              # 解码器
+        contract: com.xxx.xxx.SimpleContract            # 用于支持注解配置
+        decode404: false                                # 是否对404错误解码（具体处理逻辑查看 feign.SynchronousMethodHandler#executeAndDecode类）
+        request-interceptors:        - com.xxx.xxx.SimpleTestInterceptor             # 拦截器
+        
+      # 全局配置（所有服务都生效）  
+      #default:
+      #  logger-level: full
+# 配置Feign的日志级别（注意：一定要是debug，还有就是要定义Feign本身的日志级别（具体看README.md说明），否则无法生效）
+logging:
+  level:
+    com.firecode.springcloud_test.client.feign.ervice.TestService: debug
+    
