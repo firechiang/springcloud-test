@@ -15,6 +15,7 @@ spring:
     default-property-inclusion: non-null
     
   # RabbitMQ相关配置（注意：我们这里面配置MQ的原因是Spring Cloud Bus要使用，它的配置刷新就是通过MQ来做的）
+  # 注意：想要自动刷新配置的服务，都要要配置MQ地址和bus
   rabbitmq:
     addresses: 192.168.229.132:5672
     username: guest
@@ -23,6 +24,12 @@ spring:
     
   # Spring Cloud Bus 配置Config自动刷新 （注意：每次我们更新配置之后要请求一下下面配置的接口，配置才会自动刷新）
   cloud:
+    # 指定Kafka服务地址，用来做bus 配置刷新（注意：想要自动刷新配置，该服务就要配置MQ地址和bus）
+#    stream:
+#      kafka:
+#        binder:
+#          brokers:
+#             - 127.0.0.1:9092
     bus:
       enabled: true
       refresh:
@@ -50,10 +57,11 @@ logging:
     com.firecode.elktest.biz.dao: debug
     org.hibernate.SQL: debug
     
-# 暴露接口地址相关配置（注：bus-refresh是暴露Spring Cloud Config配置自动刷新的接口,health是暴露监控相关接口，info是暴露服务相关信息接口）   
-# 注意：每次我们更新配置之后要请求一下这个接口，配置才会自动刷新。
+# 暴露接口地址相关配置（注：refresh是暴露单个服务配置刷新接口（注意：这个不会走消息队列）,bus-refresh是暴露Spring Cloud Config Bus配置自动刷新的接口,health是暴露监控相关接口，info是暴露服务相关信息接口）   
+# 注意：每次我们更新配置之后要请求一下这个接口，配置才会自动刷新,而且要自动刷新的配置使用处需要加上 @RefreshScope 注解（可以加在使用处的类上也可以在使用处的单个属性上）
 # 请求地址：curl -v -X POST http://192.168.2.1:8082/actuator/bus-refresh
 # 配置自动刷新的原理：请求接口之后，Config Server更新配置，然后利用Spring Cloud Bus发送消息，最后所有服务消费消息，找Config Server更新配置
+# 总结：想要自动刷新配置的服务，都要要配置MQ地址和bus。当然这个暴露接口地址的配置，除了Config Server以外，其它的服务可以不配置
 management:
   endpoints:
     web:
@@ -61,6 +69,7 @@ management:
         include:
           health
           info
+          refresh
           bus-refresh
           
           

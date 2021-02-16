@@ -11,10 +11,6 @@
 	<packaging>pom</packaging>
 	<properties></properties>
 	
-	<dependencys>
-
-	</dependencys>
-	
 	<modules>
 		<module>user-service</module>
 	</modules>
