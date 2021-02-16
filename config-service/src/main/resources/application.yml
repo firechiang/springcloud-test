@@ -50,7 +50,7 @@ logging:
     com.firecode.elktest.biz.dao: debug
     org.hibernate.SQL: debug
     
-# 暴露接口地址相关配置（注：下面的配置是暴露Spring Cloud Config配置自动刷新的接口）   
+# 暴露接口地址相关配置（注：bus-refresh是暴露Spring Cloud Config配置自动刷新的接口,health是暴露监控相关接口，info是暴露服务相关信息接口）   
 # 注意：每次我们更新配置之后要请求一下这个接口，配置才会自动刷新。
 # 请求地址：curl -v -X POST http://192.168.2.1:8082/actuator/bus-refresh
 # 配置自动刷新的原理：请求接口之后，Config Server更新配置，然后利用Spring Cloud Bus发送消息，最后所有服务消费消息，找Config Server更新配置
@@ -59,6 +59,8 @@ management:
     web:
       exposure:
         include:
+          health
+          info
           bus-refresh
           
           
